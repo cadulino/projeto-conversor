@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>App Clínica</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script th:src="@{/js/script.js}"></script>
+
+
+</head>
+<body>
+	<div class="container">
+		<div>
+			<h3>Conversor EURO - IENE </h3>
+			<form th:action="@{/converter}" th:method="post" th:object="${conversor}">
+				<div class="form-group col-md-6">
+					<label for="name">Tipo de conversão</label>
+					<select th:field="*{name}" class="form-control" id="name" >
+		                <option value="EURO-IENE">Euro-Iene</option>
+		                <option value="IENE-EURO">Iene-Euro</option>
+	                 </select>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="valor">Valor em euro: </label>
+					<input class="form-control" id="valor" type="text" th:field="*{valor}"/>
+				</div>
+				<div class="form-group col-md-12">
+		             <input type="submit" class="btn  btn-success" value="Converter" />
+		         </div>
+		    </form>
+		    <br/>
+		    <br/>
+		    <div class="col-md-6">
+		    	<b th:if="${euroToIene} != null" th:text="${'¥ ' + euroToIene}"></b>
+		    	<b th:if="${ieneToEuro} != null" th:text="${'€ ' + ieneToEuro}"></b>
+		    </div>
+		</div>
+		<br/>
+		
+	</div>
+    
+
+
+</body>
+</html>
